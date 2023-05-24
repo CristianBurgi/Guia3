@@ -1,0 +1,76 @@
+public class Jugador {
+
+    private String nombre;
+
+    private int clasificacion;
+
+    public Jugador(String nombre) {
+    }
+
+    public Dado tirarDado(Dado dado) {
+        dado.generarNro();
+      
+        clasificacion += dado.getNumero();
+        
+        return dado;
+    }
+
+    public int verClasificacion() {
+        return clasificacion;
+    }
+}
+
+-----------------------------------------------
+public class Dado {
+
+    private int numero;
+
+    public Dado() {
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public void generarNro() {
+        if(numero==0){
+            numero=(int)(Math.random()*6)+1;
+            
+        }
+        
+    }
+
+    public int verNro() {
+        return numero;
+    }
+
+    @Override
+    public String toString() {
+        return "Dado{" + "numero=" + numero + '}';
+    }
+    
+}
+---------------------------------------------------
+ */
+public class TestJuego {
+
+   
+    public static void main(String[] args) {
+       
+        Dado dado1=new Dado();
+        Dado dado2=new Dado();
+        Dado dado3=new Dado();
+        
+        Jugador J1=new Jugador("Pocho");
+        
+        System.out.println(J1.tirarDado(dado1)); 
+        System.out.println(J1.tirarDado(dado2));
+        System.out.println(J1.tirarDado(dado3));
+        
+    }
+
+}

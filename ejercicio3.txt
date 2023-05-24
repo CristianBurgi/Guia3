@@ -1,0 +1,193 @@
+
+public static void main(String[] args) {
+        
+       Auto fito=new Auto("Rojo","aw109wip",50);
+       
+       Rueda delIzq=new Rueda("Pirelli",28.0);
+       Rueda delDer=new Rueda("Pirelli",28.0);
+       Rueda traIzq=new Rueda("Pirelli",28.0);
+       Rueda traDer=new Rueda("Pirelli",28.0);
+       
+       fito.incorporarRueda(traDer);
+       fito.incorporarRueda(traIzq);
+       fito.incorporarRueda(delIzq);
+       fito.incorporarRueda(delDer);
+        System.out.println(" ");
+        
+       fito.avanzar(100);
+       fito.avanzar(600);
+       fito.retroceder(50);
+       
+
+       
+    } 
+
+
+---------------------------------------------------------------------
+
+public class Rueda {
+    private String marca;
+    private double presion;
+
+    public Rueda(String marca, double presion) {
+        this.marca = marca;
+        this.presion = 28.0;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public double getPresion() {
+        return presion;
+    }
+
+    public void setPresion(double presion) {
+        this.presion = presion;
+    }
+    
+    public void inflar(){
+        if(presion<28.0){
+            
+            presion=28.0;
+            System.out.println("Se infló la rueda.");
+        }
+        
+        
+    }
+    
+    public void pinchar(){
+        
+            presion=0.1;
+            System.out.println("mala suerte, cambie la rueda");
+        }
+        
+    
+    
+    public void desinflar(){
+        if(presion>28 || presion<30){
+            
+            presion=presion-0.5;
+            System.out.println(" se desinfló la rueda ");
+        }
+
+        
+        
+    }
+
+    @Override
+    public String toString() {
+        return "Rueda{" + "marca=" + marca + ", presion=" + presion + '}';
+    }
+---------------------------------------------------------------------------------------
+public class Auto {
+    
+    private String color;
+    private String patente;
+    private double combustible;
+    private Rueda rueda1,rueda2,rueda3,rueda4;
+
+    public Auto(String color, String patente, double combustible) {
+        this.color = color;
+        this.patente = patente;
+        this.combustible = 50;
+        
+        
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getPatente() {
+        return patente;
+    }
+
+    public void setPatente(String patente) {
+        this.patente = patente;
+    }
+
+    public double getCombustible() {
+        return combustible;
+    }
+
+    public void setCombustible(double combustible) {
+        this.combustible = combustible;
+    }
+          
+    public void avanzar(double metro){
+        double consumo = 1.5;       
+
+        while(true)
+            
+        if(combustible>consumo || combustible>10){
+               combustible=combustible-consumo*metro;
+            System.out.println("puede avanzar");
+            break;
+        }else{
+            System.out.println("se quedo sin combustible, por favor llene el tanque");
+            
+            llenarTanque();
+            
+            System.out.println("Ya llenó el tanque, puede seguir avanzando");
+            break;
+        }
+        
+        
+        
+        
+    }   
+    
+    public void retroceder(double metro){
+        double consumo = 1.5;       
+
+        while(true)
+            
+        if(combustible>consumo || combustible>10){
+               combustible=combustible-consumo*metro;
+            System.out.println("puede avanzar");
+            break;
+        }else{
+            System.out.println("se quedo sin combustible, por favor llene el tanque");
+            
+            llenarTanque();
+            
+            System.out.println("Ya llenó el tanque, puede seguir avanzando");
+            break;
+        }
+        
+    }
+    
+    public void llenarTanque(){
+        if(combustible==10){
+            combustible=50;
+        }
+            
+        
+        
+    }
+    public void incorporarRueda(Rueda nueva){
+        if (rueda1==null){
+            rueda1=nueva;
+            System.out.println("rueda puesta"+nueva);
+            
+        }else if (rueda2==null){
+            rueda2=nueva;
+            System.out.println("rueda puesta"+nueva);
+            
+    }else if (rueda3==null){
+            rueda3=nueva;
+            System.out.println("rueda puesta"+nueva);
+    }else if (rueda4==null){
+            rueda4=nueva;
+            System.out.println("rueda puesta"+nueva);
+    }
+    }
